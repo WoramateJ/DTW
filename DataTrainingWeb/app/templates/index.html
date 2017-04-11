@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>index</title>
-</head>
-<body>
-  <form action="{% url 'app:doLogin' %}" method="post">
-    {% csrf_token %}
-    <input type="text" placeholder="username" name="username"><br>
-    <input type="password" placeholder="password" name="password"><br>
-    <input type="submit" value="Login">
-  </form>
-  <form action="{% url 'app:register' %}">
-    <button type="submit" name="button" >register</button>
-  </form>
-  <form action="{% url 'app:stdList' %}">
-    <button type="submit" name="button" action=>student List</button>
-  </form>
-</body>
-</html>
+{% extends "base_template.html" %}
+
+{% block Theme_css %}
+<link rel="stylesheet" href="../static/css/login_page.min.css">
+{% endblock %}
+
+{% block intro_Header %}
+    <header class="intro">
+      <div class="grad"></div>
+      <div class="header">
+        <div>Data<span>Training</span></div>
+      </div>
+      <br>
+      <div class="login">
+        <form action="{% url 'app:doLogin' %}" method="post">
+          {% csrf_token %}
+          <input type="text" placeholder="username" name="username"><br>
+          <input type="password" placeholder="password" name="password"><br>
+          <input type="submit" value="Login">
+        </form>
+        <form action="{% url 'app:register' %}">
+          <input type="submit" value="Register" ></input>
+        </form>
+        <form action="{% url 'app:stdList' %}">
+          <input type="submit" value="Student List" action=></input>
+        </form>
+      </div>
+    </header>
+{% endblock %}
