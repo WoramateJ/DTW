@@ -24,8 +24,7 @@ def registerView( request ):
     return render( request, 'register.html' )
 
 def stdListView( request ):
-    stds = Student.objects.all()
-    return render( request, 'stdList.html', { 'stds':stds } )
+    return render( request, 'stdList.html', { 'stds':getStudentList() } )
 
 def homeView( request ):
     return render( request, 'home.html', {'no_group':no_group} )
@@ -40,7 +39,7 @@ def doLogin( request ):
         if debug:
             print( "login fail" )
         return render( request, 'register.html')
-    if debuf:
+    if debug:
         print( "login pass" )
     return render( request, 'home.html' )
 
@@ -58,3 +57,6 @@ def doRegister( request ):
         print( "password: " + str( std.password ) )
         print( "name: " + str( std.name ) )
     return render( request, 'index.html' )
+
+def getStudentList():
+    return Student.objects.all()
