@@ -9,11 +9,15 @@ from django.contrib.auth.models import User
 from app.models import Student
 
 import django.contrib.auth  as auth
+import json
 
 # Create your views here.
 
+#Local debugging
 debug = False
-no_group = 3
+
+#Location of JSON file.
+JLocation = ''
 
 #Views
 
@@ -37,10 +41,10 @@ def doLogin( request ):
     row = Student.objects.filter( username=username, password=password )
     if not row :
         if debug:
-            print( "login fail" )
+            print( 'login fail' )
         return render( request, 'register.html')
     if debug:
-        print( "login pass" )
+        print( 'login pass' )
     return render( request, 'home.html' )
 
 def doRegister( request ):
@@ -53,10 +57,13 @@ def doRegister( request ):
         std = Student( username=username, password=password, name=name )
         std.save()
     if debug:
-        print( "username: " + str( std.username ) )
-        print( "password: " + str( std.password ) )
-        print( "name: " + str( std.name ) )
+        print( 'username: ' + str( std.username ) )
+        print( 'password: ' + str( std.password ) )
+        print( 'name: ' + str( std.name ) )
     return render( request, 'index.html' )
 
 def getStudentList():
     return Student.objects.all()
+
+def loadJson( id_num ):
+    return 0
