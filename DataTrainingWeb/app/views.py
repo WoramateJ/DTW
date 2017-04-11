@@ -9,12 +9,13 @@ from django.contrib.auth.models import User
 from app.models import Student
 
 import django.contrib.auth  as auth
-import json
-
-# Create your views here.
+import json, random
 
 #Local debugging
 debug = False
+
+#Student
+numberOfQueueSet=20
 
 #Location of JSON file.
 JLocation = ''
@@ -36,7 +37,10 @@ def homeView( request ):
 def trainingView( request ):
     return render( request, 'training.html' )
 
-#Logical
+def adminView( request ):
+    return render( request, 'admin.html' )
+
+#Model
 
 def doLogin( request ):
     username = request.POST['username']
@@ -51,10 +55,12 @@ def doLogin( request ):
     return render( request, 'home.html' )
 
 def doRegister( request ):
-    username = request.POST['username']
-    password = request.POST['password']
-    passwordCheck = request.POST['passwordCheck']
-    name = request.POST['name']
+    _username = request.POST['username']
+    _password = request.POST['password']
+    _passwordCheck = request.POST['passwordCheck']
+    _name = request.POST['name']
+    _queue = generateQueues()
+    _memory = ''
     std = 0
     if password == passwordCheck:
         std = Student( username=username, password=password, name=name )
@@ -65,8 +71,38 @@ def doRegister( request ):
         print( 'name: ' + str( std.name ) )
     return render( request, 'index.html' )
 
+#Misc
+
 def getStudentList():
     return Student.objects.all()
 
 def loadJson( id_num ):
     return 0
+
+def generateQueue():
+    l = [[0,True],[1,True],[2,True],[3,True],[4,True],[5,True],[6,True],[7,True],[8,True],[9,True],[10,True],[11,True],[12,True],[13,True],[14,True],[15,True],[16,True],[17,True],[18,True],[19,True]]
+    tmp = ''
+    count = 0
+    while( True ):
+        r = random.randint( 0, 19 )
+        if l[r-1][1]:
+            l[r-1][1] = False
+            if r<10:
+                tmp = tmp+'0'+str( r )
+            else:
+                tmp = tmp+str( r )
+            count = count+1
+        if count == 20:
+            break
+    return tmp
+
+def generateQueues():
+    n = numberOfQueueSet
+    tmp = ''
+    i = 0
+    while( i<n ):
+        tmp = tmp+generateQueue()
+        i=i+1
+        if n-i!=0:
+            tmp=tmp+','
+    return tmp

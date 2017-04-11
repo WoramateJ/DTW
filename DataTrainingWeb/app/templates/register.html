@@ -1,21 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>register</title>
-</head>
-<body>
-  <form action="{% url 'app:doRegister' %}" method="post">
-    {% csrf_token %}
-    <input type="text" placeholder="username" name="username"><br>
-    <input type="password" placeholder="password" name="password"><br>
-    <input type="password" placeholder="re-enter password" name="passwordCheck"><br>
-    <input type="text" placeholder="name" name="name"><br>
-    <input type="text" placeholder="queue" name="queue"><br>
-    <input type="text" placeholder="memory" name="memory"><br>
-    <input type="submit" value="register">
-  </form>
-</body>
-</html>
+{% extends "base_template.html" %}
+
+{% block Theme_css %}
+<link rel="stylesheet" href="../static/css/login_page.min.css">
+{% endblock %}
+
+{% block intro_Header %}
+    <header class="intro">
+      <div class="grad"></div>
+      <div class="header">
+        <div>Data<span>Training</span></div>
+      </div>
+      <br>
+      <div class="login">
+        <form action="{% url 'app:doRegister' %}" method="post">
+          {% csrf_token %}
+          <input type="text" placeholder="username" name="username"><br>
+          <input type="password" placeholder="password" name="password"><br>
+          <input type="password" placeholder="re-enter password" name="passwordCheck"><br>
+          <input type="text" placeholder="name" name="name"><br>
+          <input type="text" placeholder="queue" name="queue"><br>
+          <input type="text" placeholder="memory" name="memory"><br>
+          <input type="submit" value="register">
+        </form>
+      </div>
+    </header>
+{% endblock %}
