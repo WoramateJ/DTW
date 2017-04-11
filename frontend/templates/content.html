@@ -1,0 +1,42 @@
+{% extends "base_template.html" %}
+
+{% block navigation %}
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a>nickname firstname</a>
+                    <li>
+                        <a >LOGOUT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <section class="container content-section text-center">
+        <div class= "section">
+          <div class= "row">
+            <p>Header Over Here!</p>
+          </div>
+           <div class= "row">
+            <div class="col-lg-4">
+                <button style="height:200px;width:200px" type="button" class="btn btn-warning">Group 1</button>
+            </div>
+            <div class="col-lg-4">
+                <button style="height:200px;width:200px" type="button" class="btn btn-warning disabled">Group 2</button>
+            </div>
+            <div class="col-lg-4">
+                <button style="height:200px;width:200px" type="button" class="btn btn-warning disabled">Group 3</button>
+            </div>
+           </div>
+        </div>
+
+        
+    </section>
+
+
+{% endblock %}
