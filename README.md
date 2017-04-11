@@ -16,13 +16,13 @@ for Windows user, recommend this<br/>
 Then install virtualenv<br/>
 ```$ pip install virtualenv```<br/>
 ### 2. clone this repository ###
-```$ git clone https://github.com/WoramateJ/DataTrainingWeb.git```
+```$ git clone https://github.com/WoramateJ/DTW.git```
 ### 3. create virtual environment via virtualenv ###
 ```$ virtualenv yourEnvironmentName```
 ### 4. Activate virtualenv ###
-For linux
-```$ env\Scripts\activate```<br/>
 For Windows
+```$ env\Scripts\activate```<br/>
+For linux
 ```$ env/bin/activate```
 ### 5. install python project package dependencies ###
 ```$ pip install -r requirements.txt```
