@@ -9,11 +9,15 @@ from django.contrib.auth.models import User
 from app.models import Student
 
 import django.contrib.auth  as auth
+import json
 
 # Create your views here.
 
+#Local debugging
 debug = False
-no_group = 3
+
+#Location of JSON file.
+JLocation = ''
 
 #Views
 
@@ -24,8 +28,7 @@ def registerView( request ):
     return render( request, 'register.html' )
 
 def stdListView( request ):
-    stds = Student.objects.all()
-    return render( request, 'stdList.html', { 'stds':stds } )
+    return render( request, 'stdList.html', { 'stds':getStudentList() } )
 
 def homeView( request ):
     return render( request, 'home.html', {'no_group':no_group} )
@@ -38,10 +41,10 @@ def doLogin( request ):
     row = Student.objects.filter( username=username, password=password )
     if not row :
         if debug:
-            print( "login fail" )
+            print( 'login fail' )
         return render( request, 'register.html')
-    if debuf:
-        print( "login pass" )
+    if debug:
+        print( 'login pass' )
     return render( request, 'home.html' )
 
 def doRegister( request ):
@@ -54,7 +57,13 @@ def doRegister( request ):
         std = Student( username=username, password=password, name=name )
         std.save()
     if debug:
-        print( "username: " + str( std.username ) )
-        print( "password: " + str( std.password ) )
-        print( "name: " + str( std.name ) )
+        print( 'username: ' + str( std.username ) )
+        print( 'password: ' + str( std.password ) )
+        print( 'name: ' + str( std.name ) )
     return render( request, 'index.html' )
+
+def getStudentList():
+    return Student.objects.all()
+
+def loadJson( id_num ):
+    return 0
