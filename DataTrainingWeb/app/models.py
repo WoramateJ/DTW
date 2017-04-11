@@ -11,4 +11,4 @@ class Student( models.Model ):
 
 class Group( models.Model ):
     name = models.CharField( max_length=10 )
-    post = models.CharField( max_length=339 )
+    post = models.CharField( max_length=179 )
