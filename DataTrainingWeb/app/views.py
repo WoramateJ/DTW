@@ -31,7 +31,10 @@ def stdListView( request ):
     return render( request, 'stdList.html', { 'stds':getStudentList() } )
 
 def homeView( request ):
-    return render( request, 'home.html', {'no_group':no_group} )
+    return render( request, 'home.html' )
+
+def trainingView( request ):
+    return render( request, 'training.html' )
 
 #Logical
 
