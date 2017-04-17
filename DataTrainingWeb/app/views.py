@@ -25,8 +25,8 @@ JLocation = ''
 def loginView( request ):
     return render( request, 'index.html' )
 
-def registerView( request ):
-    return render( request, 'register.html' )
+def manageStudentView( request ):
+    return render( request, 'manageStudent.html', { 'stds':getStudentList() } )
 
 def stdListView( request ):
     return render( request, 'stdList.html', { 'stds':getStudentList() } )
@@ -41,10 +41,7 @@ def adminView( request ):
     return render( request, 'admin.html' )
 
 def groupView( request ):
-    return render( request, 'group.html' )
-
-def trainingView( request ):
-    return render( request, 'training.html' )
+    return render( request, 'addGroup.html' )
 
 #Model
 
@@ -97,7 +94,7 @@ def deleteStd( request ):
     _std_name = request.POST['std_name']
     std = Student.objects.get( name=_std_name )
     Student.delete( std )
-    return render( request, 'stdList.html' )
+    return manageStudentView( request )
 
 #Misc
 

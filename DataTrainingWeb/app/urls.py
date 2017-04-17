@@ -7,11 +7,11 @@ app_name = 'app'
 urlpatterns = [
     #Views
     url(r'^$', views.loginView, name='login'),
-    url(r'^register', views.registerView, name='register'),
-    url(r'^stdList', views.stdListView, name='stdList'),
+    url(r'^managestudent', views.manageStudentView, name='manageStudent'),
+    url(r'^stdlist', views.stdListView, name='stdList'),
     url(r'^home', views.homeView, name='home'),
     url(r'^training', views.trainingView, name='training'),
-    url(r'^appAdmin', views.adminView, name='appAdmin'),
+    url(r'^appadmin', views.adminView, name='appAdmin'),
     url(r'^group', views.groupView, name='group'),
     url(r'^training', views.trainingView, name='training'),
     #Actions

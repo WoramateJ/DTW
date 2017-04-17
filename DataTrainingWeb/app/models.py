@@ -16,3 +16,4 @@ class Student( models.Model ):
 class Group( models.Model ):
     name = models.CharField( max_length=10 )
     post = models.CharField( max_length=179 )
+    visible = models.BooleanField()
