@@ -25,8 +25,7 @@
         </div>
          <div class= "row">
           <div class="col-lg-4">
-            <form action="{% url 'app:register' %}" method="post">
-              {% csrf_token %}
+            <form action="{% url 'app:register' %}" method="post">{% csrf_token %}
               <input style="height:200px;width:200px" type="submit" class="btn btn-warning" value="Register a Student">
             </form>
           </div>

@@ -53,15 +53,19 @@ def doLogin( request ):
     _password = request.POST['password']
     row = Student.objects.filter( username=_username, password=_password )
     if not row :
+
         # Debug
         if debug:
             print( 'login fail' )
         # End debug
+
         return render( request, 'register.html')
+
     # Debug
     if debug:
         print( 'login pass' )
     # End debig
+
     request.session['name']=row[0].name
     return render( request, 'home.html', { 'name':request.session[ 'name' ] } )
 
@@ -79,10 +83,14 @@ def doRegister( request ):
     if _password == _passwordCheck:
         std = Student( username=_username, password=_password, name=_name, queue=_queue, memory=_memory )
         std.save()
+
+    # Debug
     if debug:
         print( 'username: ' + str( std.username ) )
         print( 'password: ' + str( std.password ) )
         print( 'name: ' + str( std.name ) )
+    # End debug
+
     return render( request, 'index.html' )
 
 def deleteStd( request ):

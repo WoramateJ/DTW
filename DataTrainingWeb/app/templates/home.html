@@ -9,7 +9,9 @@
                   <span>{{ name }} &nbsp;&nbsp;&nbsp;</span>
                 </li>
                 <li>
-                  <span><a >LOGOUT</a></span>
+                  <form action="{% url 'app:doLogout' %}" method="post">{% csrf_token %}
+                    <input type="submit" value="logout"></input>
+                  </form>
                 </li>
             </ul>
         </div>
