@@ -1,29 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>stdList</title>
-</head>
-<body>
-  <table>
-    <tr>
-      <th>username</th>
-      <th>password</th>
-      <th>name</th>
-      <th>queue</th>
-      <th>memory</th>
-    </tr>
-    {% for std in stds %}
-    <tr>
-      <td>{{ std.username }}</td>
-      <td>{{ std.password }}</td>
-      <td>{{ std.name }}</td>
-      <td>{{ std.queue }}</td>
-      <td>{{ std.memory }}</td>
-    </tr>
-    {% endfor %}
+{% extends "base_template.html" %}
+
+{% block content %}
+  <table class="table table-responsive">
+    <thead class="thead-inverse">
+      <tr>
+        <th>username</th>
+        <th>password</th>
+        <th>name</th>
+        <th>queue</th>
+        <th>memory</th>
+        <th>Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for std in stds %}
+        <tr>
+          <td>{{ std.username }}</td>
+          <td>{{ std.password }}</td>
+          <td>{{ std.name }}</td>
+          <td>
+            <div style="height:50px;width:500px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+              {{ std.queue }}
+            </div>
+          </td>
+          <td>{{ std.memory }}</td>
+          <td>
+            <form action="{% url 'app:deleteStd' %}" method="post">
+              {% csrf_token %}
+              <button name="std_name" value="{{ std.name }}">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
   </table>
-</body>
-</html>
+{% endblock %}

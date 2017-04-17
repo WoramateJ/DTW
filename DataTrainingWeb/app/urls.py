@@ -12,7 +12,11 @@ urlpatterns = [
     url(r'^home', views.homeView, name='home'),
     url(r'^training', views.trainingView, name='training'),
     url(r'^appAdmin', views.adminView, name='appAdmin'),
+    url(r'^group', views.groupView, name='group'),
+    url(r'^training', views.trainingView, name='training'),
     #Actions
     url(r'^doLogin', views.doLogin, name='doLogin'),
     url(r'^doRegister', views.doRegister, name='doRegister'),
+    url(r'^deleteStd', views.deleteStd, name='deleteStd'),
+    url(r'^logout', views.doLogout, name='doLogout'),
 ]

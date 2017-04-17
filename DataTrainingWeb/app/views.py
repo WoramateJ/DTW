@@ -40,19 +40,33 @@ def trainingView( request ):
 def adminView( request ):
     return render( request, 'admin.html' )
 
+def groupView( request ):
+    return render( request, 'group.html' )
+
+def trainingView( request ):
+    return render( request, 'training.html' )
+
 #Model
 
 def doLogin( request ):
-    username = request.POST['username']
-    password = request.POST['password']
-    row = Student.objects.filter( username=username, password=password )
+    _username = request.POST['username']
+    _password = request.POST['password']
+    row = Student.objects.filter( username=_username, password=_password )
     if not row :
+        # Debug
         if debug:
             print( 'login fail' )
+        # End debug
         return render( request, 'register.html')
+    # Debug
     if debug:
         print( 'login pass' )
-    return render( request, 'home.html' )
+    # End debig
+    request.session['name']=row[0].name
+    return render( request, 'home.html', { 'name':request.session[ 'name' ] } )
+
+def doLogout( request ):
+    return render( request, 'index.html' )
 
 def doRegister( request ):
     _username = request.POST['username']
@@ -62,14 +76,20 @@ def doRegister( request ):
     _queue = generateQueues()
     _memory = ''
     std = 0
-    if password == passwordCheck:
-        std = Student( username=username, password=password, name=name )
+    if _password == _passwordCheck:
+        std = Student( username=_username, password=_password, name=_name, queue=_queue, memory=_memory )
         std.save()
     if debug:
         print( 'username: ' + str( std.username ) )
         print( 'password: ' + str( std.password ) )
         print( 'name: ' + str( std.name ) )
     return render( request, 'index.html' )
+
+def deleteStd( request ):
+    _std_name = request.POST['std_name']
+    std = Student.objects.get( name=_std_name )
+    Student.delete( std )
+    return render( request, 'stdList.html' )
 
 #Misc
 

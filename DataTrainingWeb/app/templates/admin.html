@@ -1,18 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Admin</title>
-</head>
-<body>
-  <form action="{% url 'app:doRegister' %}" method="post">
-    {% csrf_token %}
-    <input type="submit" value='Register a Student'>
-  </form>
-  <form action="{% url 'app:stdList' %}">
-    <input type="submit" value="Student List" action=>
-  </form>
-</body>
-</html>
+{% extends "base_template.html" %}
+
+{% block navigation %}
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <span>nickname firstname &nbsp;&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <span><a >LOGOUT</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+    <section class="container content-section text-center">
+      <div class= "section">
+        <div class= "row">
+          <p>Menu list</p>
+        </div>
+         <div class= "row">
+          <div class="col-lg-4">
+            <form action="{% url 'app:register' %}" method="post">
+              {% csrf_token %}
+              <input style="height:200px;width:200px" type="submit" class="btn btn-warning" value="Register a Student">
+            </form>
+          </div>
+          <div class="col-lg-4">
+            <form action="{% url 'app:stdList' %}" method="post">
+              {% csrf_token %}
+              <input style="height:200px;width:200px" type="submit" class="btn btn-warning" value="Student List">
+            </form>
+          </div>
+          <div class="col-lg-4">
+            <form action="{% url 'app:group' %}" method="post">
+              {% csrf_token %}
+              <input style="height:200px;width:200px" type="submit" class="btn btn-warning" value="Insert new group">
+            </form>
+          </div>
+         </div>
+      </div>
+    </section>
+
+
+{% endblock %}

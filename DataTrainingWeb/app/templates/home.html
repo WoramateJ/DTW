@@ -6,10 +6,10 @@
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <span>nickname firstname &nbsp;&nbsp;&nbsp;</span>
+                  <span>{{ name }} &nbsp;&nbsp;&nbsp;</span>
                 </li>
                 <li>
-                    <span><a >LOGOUT</a></span>
+                  <span><a >LOGOUT</a></span>
                 </li>
             </ul>
         </div>
@@ -25,7 +25,10 @@
           </div>
            <div class= "row">
             <div class="col-lg-4">
-                <button style="height:200px;width:200px" type="button" class="btn btn-warning">Group 1</button>
+              <form action="{% url 'app:training' %}" method="post">
+                {% csrf_token %}
+                <input style="height:200px;width:200px" type="button" class="btn btn-warning" value="Group 1">
+              </form>
             </div>
             <div class="col-lg-4">
                 <button style="height:200px;width:200px" type="button" class="btn btn-warning disabled">Group 2</button>
