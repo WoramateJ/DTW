@@ -1,0 +1,62 @@
+{% extends "base_template.html" %}
+
+{% block Theme_css %}
+<link rel="stylesheet" href="../static/css/login_page.min.css">
+{% endblock %}
+<!--
+{% block intro_Header %}
+
+{% endblock %} -->
+
+{% block content %}
+  <div class="intro">
+    <div class="grad"></div>
+    <div class="header">
+      <div>New<span>Student</span></div>
+    </div>
+    <br>
+    <div class="login">
+      <form action="{% url 'app:doRegister' %}" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="username" name="username"><br>
+        <input type="password" placeholder="password" name="password"><br>
+        <input type="password" placeholder="re-enter password" name="passwordCheck"><br>
+        <input type="text" placeholder="name" name="name"><br>
+        <input type="submit" value="register">
+      </form>
+    </div>
+  </div>
+  <table class="table table-responsive">
+    <thead class="thead-inverse">
+      <tr>
+        <th>username</th>
+        <th>password</th>
+        <th>name</th>
+        <th>queue</th>
+        <th>memory</th>
+        <th>Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for std in stds %}
+        <tr>
+          <td>{{ std.username }}</td>
+          <td>{{ std.password }}</td>
+          <td>{{ std.name }}</td>
+          <td>
+            <div style="height:50px;width:500px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+              {{ std.queue }}
+            </div>
+          </td>
+          <td>{{ std.memory }}</td>
+          <td>
+            <form action="{% url 'app:deleteStd' %}" method="post">
+              {% csrf_token %}
+              <button name="std_name" value="{{ std.name }}">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -8,10 +8,10 @@
     <header class="intro">
       <div class="grad"></div>
       <div class="header">
-        <div>Data<span>Training</span></div>
+        <div>New<span>Student</span></div>
       </div>
       <br>
-      <div class="Register">
+      <div class="login">
         <form action="{% url 'app:doRegister' %}" method="post">
           {% csrf_token %}
           <input type="text" placeholder="username" name="username"><br>
