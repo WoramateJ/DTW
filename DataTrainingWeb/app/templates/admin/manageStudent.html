@@ -13,7 +13,7 @@
       <div>New<span>Student</span></div>
     </div>
     <br>
-    <div class="login">
+    <div>
       {{ msg }}
       <form action="{% url 'app:doRegister' %}" method="post">
         {% csrf_token %}
@@ -24,8 +24,8 @@
       </form>
     </div>
   </div>
-  <table class="table table-responsive">
-    <thead class="thead-inverse">
+  <table>
+    <thead>
       <tr>
         <th>username</th>
         <th>password</th>

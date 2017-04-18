@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="login">
+  <div>
     {{ msg }}
     <form action="{% url 'app:addGroup' %}" method="post">
       {% csrf_token %}
@@ -37,8 +37,8 @@
       <input type="submit" value="Add Group">
     </form>
   </div>
-  <table class="table table-responsive">
-    <thead class="thead-inverse">
+  <!-- <table>
+    <thead>
       <tr>
         <th>Group</th>
         <th>Post List</th>
@@ -60,6 +60,6 @@
         </tr>
       {% endfor %}
     </tbody>
-  </table>
+  </table> -->
 </body>
 </html>

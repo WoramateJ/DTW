@@ -6,7 +6,7 @@
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <span>nickname firstname &nbsp;&nbsp;&nbsp;</span>
+                    <span>nickname firstname </span>
                 </li>
                 <li>
                     <span><a >LOGOUT</a></span>
@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block content %}
-    <section class="container content-section text-center">
+    <section>
       <div class= "section">
         <div class= "row">
           <p>Menu list</p>
@@ -26,19 +26,19 @@
          <div class= "row">
           <div class="col-lg-4">
             <form action="{% url 'app:manageStudent' %}" method="post">{% csrf_token %}
-              <input style="height:200px;width:200px" type="submit" class="btn btn-warning" value="Manage Student">
+              <input style="height:200px;width:200px" type="submit" value="Manage Student">
             </form>
           </div>
           <div class="col-lg-4">
             <form action="{% url 'app:group' %}" method="post">
               {% csrf_token %}
-              <input style="height:200px;width:200px" type="submit" class="btn btn-warning" value="Manage Group">
+              <input style="height:200px;width:200px" type="submit" value="Manage Group">
             </form>
           </div>
           <div class="col-lg-4">
             <form action="{% url 'app:group' %}" method="post">
               {% csrf_token %}
-              <input style="height:200px;width:200px" type="submit" class="btn btn-warning" value="Insert new group">
+              <input style="height:200px;width:200px" type="submit" value="Insert new group">
             </form>
           </div>
          </div>

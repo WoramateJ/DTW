@@ -11,7 +11,7 @@
         <div>Data<span>Training</span></div>
       </div>
       <br>
-      <div class="login">
+      <div>
         <form action="{% url 'app:doLogin' %}" method="post">
           {% csrf_token %}
           <input type="text" placeholder="username" name="username"><br>
