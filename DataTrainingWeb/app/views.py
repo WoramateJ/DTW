@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
 from django.contrib.auth.models import User
-from app.models import Student
+from app.models import Student, Group
 
 import django.contrib.auth  as auth
 import json, random
@@ -18,37 +18,39 @@ debug = False
 numberOfQueueSet=20
 
 #Location of JSON file.
-JLocation = ''
+JSONLocation = '/Content_Set'
 
 #Views
 
 def loginView( request ):
     return render( request, 'index.html' )
 
-def manageStudentView( request ):
-    return render( request, 'manageStudent.html', { 'stds':getStudentList() } )
-
-def stdListView( request ):
-    return render( request, 'stdList.html', { 'stds':getStudentList() } )
-
 def homeView( request ):
     return render( request, 'home.html' )
 
 def trainingView( request ):
-    return render( request, 'training.html' )
+    return render( request, 'training.html', { 'name':request.session[ 'name' ] } )
+
+# Admin views
 
 def adminView( request ):
-    return render( request, 'admin.html' )
+    return render( request, 'admin/admin.html' )
 
-def groupView( request ):
-    return render( request, 'addGroup.html' )
+def manageStudentView( request ):
+    return render( request, 'admin/manageStudent.html', { 'stds':getStudentList() } )
+
+def stdListView( request ):
+    return render( request, 'admin/stdList.html', { 'stds':getStudentList() } )
+
+def manageGroupView( request ):
+    return render( request, 'admin/manageGroup.html', { 'groups':getGroupList() } )
 
 #Model
 
 def doLogin( request ):
-    _username = request.POST['username']
-    _password = request.POST['password']
-    row = Student.objects.filter( username=_username, password=_password )
+    login_username = request.POST['Lusername']
+    login_password = request.POST['Lpassword']
+    row = Student.objects.filter( username=login_username, password=login_password )
     if not row :
 
         # Debug
@@ -56,7 +58,7 @@ def doLogin( request ):
             print( 'login fail' )
         # End debug
 
-        return render( request, 'register.html')
+        return render( request, 'index.html', {'msg':"Wrong username or password"})
 
     # Debug
     if debug:
@@ -70,16 +72,22 @@ def doLogout( request ):
     return render( request, 'index.html' )
 
 def doRegister( request ):
-    _username = request.POST['username']
-    _password = request.POST['password']
-    _passwordCheck = request.POST['passwordCheck']
-    _name = request.POST['name']
-    _queue = generateQueues()
-    _memory = ''
+    register_username = request.POST['username']
+    register_password = request.POST['password']
+    register_name = request.POST['name']
+    register_queue = generateQueues()
+    register_memory = ''
     std = 0
-    if _password == _passwordCheck:
-        std = Student( username=_username, password=_password, name=_name, queue=_queue, memory=_memory )
-        std.save()
+
+    row = Student.objects.filter( username=register_username )
+    if not row:
+        return render( request, 'admin/manageStudent.html', { 'msg':"Cannot register new student username: " + register_username + "\nAlready exist!", 'stds':getStudentList() } )
+    row = Student.objects.filter( name=register_name )
+    if not row:
+        return render( request, 'admin/manageStudent.html', { 'msg':"Cannot register new student name: " + register_name + "\nAlready exist!", 'stds':getStudentList() } )
+
+    std = Student( username=register_username, password=register_password, name=register_name, queue=register_queue, memory=register_memory )
+    std.save()
 
     # Debug
     if debug:
@@ -88,21 +96,60 @@ def doRegister( request ):
         print( 'name: ' + str( std.name ) )
     # End debug
 
-    return render( request, 'index.html' )
+    return render( request, 'admin/manageStudent.html', { 'msg':"Succesfully create student name: " + std.name, 'stds':getStudentList() } )
 
 def deleteStd( request ):
     _std_name = request.POST['std_name']
     std = Student.objects.get( name=_std_name )
     Student.delete( std )
-    return manageStudentView( request )
+    # row = Student.objects.filter( name=_std_name )
+    # for i in row:
+    #     i.delete()
+    return render( request, 'admin/manageStudent.html', { 'stds':getStudentList() } )
+
+def addGroup( request ):
+    _name = request.POST[ 'groupName' ]
+    _post = request.POST[ 'ids' ]
+    _visible = request.POST[ 'visible' ]
+
+    del request.session[ 'groupName' ]
+    del request.session[ 'ids' ]
+    del request.session[ 'visible' ]
+
+    row = Group.objects.filter( name=_name )
+
+    if not row:
+        return render( request, 'admin/manageGroup.html', {'msg':"Group name already exist." } )
+
+    group = Group( name=_name, post=_post, visible=_visible )
+    group.save()
+
+    # Debug
+    if debug:
+        print( 'name: ' + str( group.name ) )
+        print( 'post: ' + str( group.ppost ) )
+        print( 'visible: ' + str( group.visible ) )
+    # End debug
+
+    render( request, 'admin/manageGroup.html')
 
 #Misc
 
 def getStudentList():
     return Student.objects.all()
 
-def loadJson( id_num ):
-    return 0
+def getGroupList():
+    return Group.objects.all()
+
+def readJson( JSONLocation, set, id_num, arr_word, arr_pos ):
+    with open( JSONLocation+set+'/'+'id_'+id_num+'.json', encoding='utf-8' ) as json_data:
+        decoded=json.loads( json_data.read() )
+    for i in range( len( decoded[ 'id_'+id_num ] ) ):
+        if decoded[ 'id_'+id_num ][ i ][ 'word' ]=='':
+            0
+        else:
+            arr_word.append( decoded[ 'id_'+id_num ][ i ] [ 'word' ] )
+            arr_pos.append( decoded[ 'id_'+id_num ][ i ][ 'pos' ] )
 
 def generateQueue():
     l = [[0,True],[1,True],[2,True],[3,True],[4,True],[5,True],[6,True],[7,True],[8,True],[9,True],[10,True],[11,True],[12,True],[13,True],[14,True],[15,True],[16,True],[17,True],[18,True],[19,True]]
