@@ -11,9 +11,7 @@ body {
 }
 
 .center-groupbtn {
-	margin-left: 20px;
-	margin-right: 20px;
-    padding: 150px 0 0;
+    margin: 90px 0 0 90px;
 }
 
 .col-lg-4 {
@@ -22,7 +20,21 @@ body {
 }
 
 .mybody {
-	margin-top:7%;
+	margin-top:5%;
 	margin-left:10%;
 	margin-right:10%;
+}
+
+.navigation-bar {
+	height: 65px;
+	background-color: #EF9F9F;
+}
+
+.menu-position {
+  	padding-top: 20px;
+  	padding-right: 20px; 
+}
+
+.opengroup-color {
+	background-color: #A8BACF;
 }
