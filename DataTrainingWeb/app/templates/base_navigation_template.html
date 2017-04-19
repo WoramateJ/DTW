@@ -1,20 +1,26 @@
 {% extends "base_template.html" %}
 
 {% block navigation %}
-  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-      <div class="container">
-          <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-              <ul class="nav navbar-nav">
-                  <li>
-                    <span>{{ name }} &nbsp;&nbsp;&nbsp;</span>
-                  </li>
-                  <li>
-                    <form action="{% url 'app:doLogout' %}" method="post">{% csrf_token %}
-                      <input type="submit" value="logout"></input>
-                    </form>
-                  </li>
-              </ul>
-          </div>
+  <div class="ui secondary  menu">
+  <a class="active item">
+    Home
+  </a>
+  <a class="item">
+    Messages
+  </a>
+  <a class="item">
+    Friends
+  </a>
+  <div class="right menu">
+    <div class="item">
+      <div class="ui icon input">
+        <input placeholder="Search..." type="text">
+        <i class="search link icon"></i>
       </div>
-  </nav>
+    </div>
+    <a class="ui item">
+      Logout
+    </a>
+  </div>
+</div>
 {% endblock %}

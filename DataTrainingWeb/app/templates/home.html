@@ -3,10 +3,12 @@
 
 {% block content %}
     <section>
-        <h2 class="ui center aligned icon header">
-          <i class="circular settings icon"></i>
-          Select the forum group!
-        </h2>
+        <h1 class="ui center aligned icon header" style="color:white">
+          <img class="ui image" src="../static/images/pantip-icon.png" height="100" width="100">
+            <div class="content">
+            Select the forum group!
+            </div>
+        </h1>
 
         <div class="ui three column very relaxed grid">
           <div class="row">
@@ -29,20 +31,6 @@
             {% csrf_token %}
               <div class="center-groupbtn">
                 <button class="massive ui active yellow button">Group 3</button>
-              </div>
-            </form>
-
-            <form action="{% url 'app:training' %}" method="post">
-            {% csrf_token %}
-              <div class="center-groupbtn">
-                <button class="massive ui active yellow button">Group 4</button>
-              </div>
-            </form>
-
-            <form action="{% url 'app:training' %}" method="post">
-            {% csrf_token %}
-              <div class="center-groupbtn">
-                <button class="massive ui active yellow button">Group 5</button>
               </div>
             </form>
                   
