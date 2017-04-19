@@ -1,6 +1,5 @@
 {% extends "base_navigation_template.html" %}
 
-
 {% block content %}
     <section>
         <h1 class="ui center aligned icon header" style="color:white">
@@ -12,28 +11,28 @@
 
         <div class="ui three column very relaxed grid">
           <div class="row">
-           
+
             <form action="{% url 'app:training' %}" method="post">
             {% csrf_token %}
               <div class="center-groupbtn">
                 <button class="massive ui yellow button">Group 1</button>
               </div>
             </form>
-                               
+
             <form action="{% url 'app:training' %}" method="post">
             {% csrf_token %}
               <div class="center-groupbtn">
                 <button class="massive ui disabled yellow button">Group 2</button>
               </div>
-            </form>             
-                
+            </form>
+
             <form action="{% url 'app:training' %}" method="post">
             {% csrf_token %}
               <div class="center-groupbtn">
                 <button class="massive ui disabled yellow button">Group 3</button>
               </div>
             </form>
-                  
+
           </div>
         </div>
     </section>

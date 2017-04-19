@@ -1,27 +1,7 @@
 {% extends "base_template.html" %}
 
-{% block navigation %}
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <span>nickname firstname &nbsp;&nbsp;&nbsp;</span>
-                    </li>
-                    <li>
-                      <form action="{% url 'app:doLogout' %}" method="post">{% csrf_token %}
-                        <input type="submit" value="logout"></input>
-                      </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-{% endblock %}
-
 {% block content %}
     <section class="container content-section text-center">
-
         <div class="progress">
             <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
                 <span class="sr-only">60% Complete (warning)</span>
