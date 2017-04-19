@@ -1,11 +1,11 @@
 {% extends "base_template.html" %}
 
 {% block content %}
-    <div>
+    <div >
       <div>Data<span>Training</span></div>
     </div>
-    <br>
-    <div>
+
+    <div class="ui input focus">
       <form action="{% url 'app:doLogin' %}" method="post">
         {% csrf_token %}
         <input type="text" placeholder="username" name="username"><br>
