@@ -1,16 +1,35 @@
 {% extends "base_template.html" %}
 
 {% block content %}
-    <div >
-      <div>Data<span>Training</span></div>
-    </div>
 
-    <div class="ui input focus">
+<div class="ui one column stackable center aligned page grid">
+  <div class="column twelve wide">
+    <h1>DATA TRAINING</h1>
+    <div class="ui form">
+      <div class="field">
+        <div class="ui left icon input">
+          <input type="text" placeholder="Username" name="username">
+          <i class="user icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left icon input">
+          <input type="password" placeholder="password" name="password">
+          <i class="lock icon"></i>
+        </div>
+      </div>
+      <input type="submit" value="LOGIN" class="ui blue submit button">
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+    <!-- <div class="ui input focus">
       <form action="{% url 'app:doLogin' %}" method="post">
         {% csrf_token %}
         <input type="text" placeholder="username" name="username"><br>
         <input type="password" placeholder="password" name="password"><br>
         <input type="submit" value="Login">
       </form>
-    </div>
-{% endblock %}
+    </div> -->
