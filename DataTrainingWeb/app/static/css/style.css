@@ -10,20 +10,18 @@ body {
   background-color: #484860;
 }
 
-
-
 .center-groupbtn {
 	margin-left: 20px;
 	margin-right: 20px;
     padding: 150px 0 0;
-} 
+}
 
 .col-lg-4 {
 	float: left;
     width: 33.33333333%;
 }
 
-.body-home {
+.mybody {
 	margin-top:7%;
 	margin-left:10%;
 	margin-right:10%;
