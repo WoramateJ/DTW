@@ -1,6 +1,6 @@
-{% extends "base_navigation_template.html" %}
+{% extends "admin/base_admin_template.html" %}
 
-{% block content %}
+{% block admin_content %}
 
   <div class="intro">
     <div class="grad"></div>
@@ -15,45 +15,64 @@
         <input type="text" placeholder="username" name="username"><br>
         <input type="text" placeholder="password" name="password"><br>
         <input type="text" placeholder="name" name="name"><br>
-        <input type="submit" value="register">
+        <input type="submit" value="register" class="ui blue submit button">
       </form>
     </div>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th>username</th>
-        <th>password</th>
-        <th>name</th>
-        <th>queue</th>
-        <th>memory</th>
-        <th>Option</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for std in stds %}
-        <tr>
-          <td>{{ std.username }}</td>
-          <td>{{ std.password }}</td>
-          <td>{{ std.name }}</td>
-          <td>
-            <div style="height:50px;width:500px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
-              {{ std.queue }}
-            </div>
-          </td>
-          <td>
-            <div style="height:50px;width:500px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
-              {{ std.memory }}
-            </div>
-          </td>
-          <td>
-            <form action="{% url 'app:deleteStd' %}" method="post">
-              {% csrf_token %}
-              <button name="std_name" value="{{ std.name }}">Delete</button>
-            </form>
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
+
+  <h4 class="ui horizontal divider header">
+    <i class="bar chart icon"></i>
+    ALL STUDENTS
+  </h4>
+
+  <table class="ui celled table">
+  <thead>
+    <tr><th>username</th>
+    <th>password</th>
+    <th>name</th>
+    <th>queue</th>
+    <th>memory</th>
+    <th>Option</th>
+  </tr></thead>
+  <tbody>
+    {% for std in stds %}
+    <tr>
+      <td>{{ std.username }}</td>
+      <td>{{ std.password }}</td>
+      <td>{{ std.name }}</td>
+      <td>
+        <div style="height:50px;width:500px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+          {{ std.queue }}
+        </div>
+      </td>
+      <td>
+        <div style="height:50px;width:500px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+          {{ std.memory }}
+        </div>
+      </td>
+      <td>
+        <form action="{% url 'app:deleteStd' %}" method="post">
+          {% csrf_token %}
+          <button name="std_name" value="{{ std.name }}">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr><th colspan="6">
+      <div class="ui right floated pagination menu">
+        <a class="icon item">
+          <i class="left chevron icon"></i>
+        </a>
+        <a class="item">1</a>
+        <a class="item">2</a>
+        <a class="item">3</a>
+        <a class="item">4</a>
+        <a class="icon item">
+          <i class="right chevron icon"></i>
+        </a>
+      </div>
+    </th></tr></tfoot>
   </table>
 {% endblock %}

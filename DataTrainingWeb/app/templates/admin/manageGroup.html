@@ -1,6 +1,6 @@
-{% extends "base_navigation_template.html" %}
+{% extends "admin/base_admin_template.html" %}
 
-{% block content %}
+{% block admin_content %}
   <div>
     {{ msg }}
     <form action="{% url 'app:addGroup' %}" method="post">
@@ -10,24 +10,7 @@
       <input type="checkbox" name="visible" value="visible">Show<br>
       <!-- <input type="text" placeholder="id 1" name="id1"><br>
       <input type="text" placeholder="id 2" name="id2"><br>
-      <input type="text" placeholder="id 3" name="id3"><br>
-      <input type="text" placeholder="id 4" name="id4"><br>
-      <input type="text" placeholder="id 5" name="id5"><br>
-      <input type="text" placeholder="id 6" name="id6"><br>
-      <input type="text" placeholder="id 7" name="id7"><br>
-      <input type="text" placeholder="id 8" name="id8"><br>
-      <input type="text" placeholder="id 9" name="id9"><br>
-      <input type="text" placeholder="id 10" name="id10"><br>
-      <input type="text" placeholder="id 11" name="id11"><br>
-      <input type="text" placeholder="id 12" name="id12"><br>
-      <input type="text" placeholder="id 13" name="id13"><br>
-      <input type="text" placeholder="id 14" name="id14"><br>
-      <input type="text" placeholder="id 15" name="id15"><br>
-      <input type="text" placeholder="id 16" name="id16"><br>
-      <input type="text" placeholder="id 17" name="id17"><br>
-      <input type="text" placeholder="id 18" name="id18"><br>
-      <input type="text" placeholder="id 19" name="id19"><br>
-      <input type="text" placeholder="id 20" name="id20"><br> -->
+      <input type="text" placeholder="id 20" name="id3"><br> -->
       <input type="submit" value="Add Group">
     </form>
   </div>
