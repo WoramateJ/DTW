@@ -15,7 +15,7 @@
               <form action="{% url 'app:training' %}" method="post">
               {% csrf_token %}
                 <div class="center-groupbtn">
-                  <button class="massive ui inverted blue button" style="color: #186199">Group 1</button>
+                  <button class="massive ui inverted blue button">Group 1</button>
                 </div>
               </form>
             </div>
@@ -32,11 +32,51 @@
             <div class="column">      
               <form action="{% url 'app:training' %}" method="post">
               {% csrf_token %}
-                <div class="center-groupbtn">
-                    <button class="massive ui disabled inverted blue button">Group 3</button>
+                <div class="center-groupbtn puton">
+                    <button class="massive ui disabled inverted blue button">
+                      <i class="lock icon"></i>
+                      Group 3
+                    </button>
                 </div>
               </form>
             </div>
+
+            <div class="column">      
+              <form action="{% url 'app:training' %}" method="post">
+              {% csrf_token %}
+                <div class="center-groupbtn">
+                    <button class="massive ui disabled inverted blue button">
+                      <i class="lock icon"></i>
+                      Group 4
+                    </button>
+                </div>
+              </form>
+            </div>
+
+            <div class="column">      
+              <form action="{% url 'app:training' %}" method="post">
+              {% csrf_token %}
+                <div class="center-groupbtn">
+                    <button class="massive ui disabled inverted blue button">
+                      <i class="lock icon"></i>
+                      Group 5
+                    </button>
+                </div>
+              </form>
+            </div>
+
+            <div class="column">      
+              <form action="{% url 'app:training' %}" method="post">
+              {% csrf_token %}
+                <div class="center-groupbtn">
+                    <button class="massive ui disabled inverted blue button">
+                      <i class="lock icon"></i>
+                      Group 6
+                    </button>
+                </div>
+              </form>
+            </div>
+
           </div>
         </div>
     </section>
