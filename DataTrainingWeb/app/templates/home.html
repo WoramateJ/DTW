@@ -1,6 +1,5 @@
 {% extends "base_navigation_template.html" %}
 
-
 {% block content %}
     <section>
         <h1 class="ui center aligned icon header" style="color:#F5F5F5">
@@ -12,7 +11,6 @@
 
         <div class="ui three column grid">
           <div class="row">
-
             <div class="column">
               <form action="{% url 'app:training' %}" method="post">
               {% csrf_token %}
@@ -39,7 +37,6 @@
                 </div>
               </form>
             </div>
-                  
           </div>
         </div>
     </section>
