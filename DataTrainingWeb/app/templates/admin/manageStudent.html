@@ -1,38 +1,43 @@
 {% extends "admin/base_admin_template.html" %}
 
 {% block admin_content %}
+  <div style="text-align: center; height:60px">
+    <h1>Manage Student</h1>
+  </div>
 
-  <div class="intro">
-    <div class="grad"></div>
-    <div class="header">
-      <div>New<span>Student</span></div>
-    </div>
-    <br>
-    <div>
-      {{ msg }}
-      <form action="{% url 'app:doRegister' %}" method="post">
-        {% csrf_token %}
-        <input type="text" placeholder="username" name="username"><br>
-        <input type="text" placeholder="password" name="password"><br>
-        <input type="text" placeholder="name" name="name"><br>
-        <input type="submit" value="register" class="ui blue submit button">
-      </form>
+  <div class="ui one column stackable center aligned page grid">
+    <div class="column five wide">
+      <div class="ui form">
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="Username" name="username">
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="password" placeholder="password" name="password">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        <input type="submit" value="Add New Student" class="ui blue submit button">
+      </div>
     </div>
   </div>
 
   <h4 class="ui horizontal divider header">
-    <i class="bar chart icon"></i>
-    ALL STUDENTS
+  <i class="bar chart icon"></i>
+  ALL STUDENTS
   </h4>
 
-  <table class="ui celled table">
+  <table class="ui fixed single line selectable celled table">
   <thead>
-    <tr><th>username</th>
-    <th>password</th>
-    <th>name</th>
-    <th>queue</th>
-    <th>memory</th>
-    <th>Option</th>
+    <tr><th style="width: 10%;">username</th>
+    <th style="width: 10%;">password</th>
+    <th style="width: 10%;">name</th>
+    <th style="width: 30%;">queue</th>
+    <th style="width: 30%;">memory</th>
+    <th style="width: 10%;">Option</th>
   </tr></thead>
   <tbody>
     {% for std in stds %}
@@ -40,20 +45,12 @@
       <td>{{ std.username }}</td>
       <td>{{ std.password }}</td>
       <td>{{ std.name }}</td>
-      <td>
-        <div style="height:50px;width:500px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
-          {{ std.queue }}
-        </div>
-      </td>
-      <td>
-        <div style="height:50px;width:500px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
-          {{ std.memory }}
-        </div>
-      </td>
+      <td>{{ std.queue }}</td>
+      <td>{{ std.memory }}</td>
       <td>
         <form action="{% url 'app:deleteStd' %}" method="post">
           {% csrf_token %}
-          <button name="std_name" value="{{ std.name }}">Delete</button>
+          <button name="std_name" value="{{ std.name }}" class="ui red button">Delete</button>
         </form>
       </td>
     </tr>

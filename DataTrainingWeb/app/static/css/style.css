@@ -12,7 +12,7 @@ body {
   /*background-color: #BD9CB7;
   background-repeat:no-repeat;
   background-image: linear-gradient(to bottom, #523058 37%, white 100%);
-  background-blend-mode: darken;*/ 
+  background-blend-mode: darken;*/
 }
 
 .center-groupbtn {
@@ -38,7 +38,7 @@ body {
 
 .menu-position {
   	padding-top: 20px;
-  	padding-right: 20px; 
+  	padding-right: 20px;
 }
 
 .opengroup-color {
@@ -48,8 +48,8 @@ body {
 .puton {
   position: absolute;
 }
-/*
-.admin-content{
+
+/*.mypusher{
   margin-top:7%;
   margin-left:0%;
   margin-right:0%;
