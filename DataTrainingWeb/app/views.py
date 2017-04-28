@@ -29,7 +29,8 @@ def homeView( request ):
     return render( request, 'home.html' )
 
 def trainingView( request ):
-    return render( request, 'training.html', { 'name':request.session[ 'name' ] } )
+    return render( request, 'training.html' )
+    # return render( request, 'training.html', { 'name':request.session[ 'name' ] } )
 
 # Admin views
 

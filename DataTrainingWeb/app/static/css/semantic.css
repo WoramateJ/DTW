@@ -17553,6 +17553,7 @@ ol.ui.horizontal.list li:before,
 .ui.form .inline.fields .field > .selection.dropdown,
 .ui.form .inline.field > .selection.dropdown {
   width: auto;
+  color: #00B5AD
 }
 
 .ui.form .inline.fields .field > .selection.dropdown > .dropdown.icon,
@@ -29582,6 +29583,7 @@ select.ui.dropdown {
   padding: 0.5em;
   border: 1px solid rgba(34, 36, 38, 0.15);
   visibility: visible;
+  background-color: rgb(17, 164, 129);
 }
 
 .ui.selection.dropdown > .search.icon,
